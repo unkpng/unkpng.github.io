@@ -1,0 +1,39 @@
+<script>
+
+// Define the number of child windows to open
+var numWindows = 10;
+
+// Create an array to hold the window objects
+var windows = [];
+
+// Loop through the number of windows and open each one
+for (var i = 0; i < numWindows; i++) {
+  // Open a new child window with fixed width and height
+  var childWindow = window.open("", "myChildWindow" + i, "width=200,height=200");
+
+  // Set the child window position and size
+  childWindow.moveTo(0, 0);
+  childWindow.resizeTo(200, 200);
+
+  // Add the child window object to the array
+  windows.push(childWindow);
+}
+
+// Add a mousemove event listener to the window object
+window.addEventListener("mousemove", function(event) {
+  // Get the x and y coordinates of the cursor
+  var x = event.clientX;
+  var y = event.clientY;
+
+  // Loop through each window and update its position to follow the cursor
+  for (var i = 0; i < numWindows; i++) {
+    // Get the child window object from the array
+    var childWindow = windows[i];
+
+    // Update the position of the child window to follow the cursor
+    childWindow.moveTo(x - 100, y - 100);
+  }
+});
+
+
+</script>

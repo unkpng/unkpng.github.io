@@ -1,0 +1,32 @@
+<script>
+  
+ // variables 
+  let password = "admin"
+  
+  let variable = null;
+////
+
+  
+let access = prompt("enter the password: ")
+
+if (access == password) { // if password is right
+alert("authorised!")
+}
+if (access == variable) { // if password is null
+  
+  alert("wrong password.")
+  window.close()
+  
+}
+if(access == "") { // if password is empty
+
+  alert("wrong password")
+  window.close()
+}  
+if (access != password){ // if password doesnt match 
+  alert("wrong password")
+  return;
+}
+
+  
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="imageContainer"></div>
+
+<script>
+// Get the image container element by ID
+var container = document.getElementById("imageContainer");
+
+// Set the starting value for the loop counter
+var i = 1;
+
+// Create a while loop to generate the images
+while (i <= 10000000) {
+  // Create a new img element
+  var img = document.createElement("img");
+
+  // Set the src attribute of the image
+  img.src = "https://cdn.glitch.global/27b9202b-a050-48bc-baf0-b9560a574216/Trollface_non-free.png?v=1676822890840" + i + ".png";
+
+  // Set other attributes of the image
+  img.alt = "Alternative text for the image";
+  img.width = "10000";
+  img.height = "20000";
+
+  // Append the image to the container element
+  container.appendChild(img);
+
+  // Increment the loop counter
+  i++;
+}
+</script>
+
+</body>
+</html>

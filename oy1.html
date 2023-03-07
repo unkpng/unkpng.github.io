@@ -1,0 +1,49 @@
+<div id="parent">
+  <div id="child">
+   have you tried killing yourself?
+  </div>
+</div>
+
+
+<style>
+
+  #parent {
+  position: relative;
+  width: 3000px;
+  height: 3000px;
+  border: 1px solid black;
+}
+
+#child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 50px;
+  border: 1px solid red;
+}
+
+
+</style>
+
+
+
+<script>
+
+  // Get references to the parent and child elements
+var parent = document.getElementById("parent");
+var child = document.getElementById("child");
+
+// Add a mousemove event listener to the parent element
+parent.addEventListener("mousemove", function(event) {
+  // Get the x and y coordinates of the cursor
+  var x = event.clientX;
+  var y = event.clientY;
+
+  // Set the position of the child element
+  child.style.left = x + "px";
+  child.style.top = y + "px";
+});
+
+
+</script>

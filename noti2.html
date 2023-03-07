@@ -1,0 +1,17 @@
+<script>
+
+// Request permission to send notifications
+Notification.requestPermission().then(function(permission) {
+  if (permission === 'granted') {
+    // Send a notification every 10 seconds
+    setInterval(function() {
+      var notification = new Notification('Title', {
+        body: 'Message',
+        icon: 'path/to/icon.png'
+      });
+    }, 5000);
+  }
+});
+
+  
+</script>

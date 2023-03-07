@@ -1,0 +1,46 @@
+<!-- HTML -->
+<button onclick="openWindows()">Open Windows</button>
+
+<!-- JavaScript -->
+<script>
+function openWindows() {
+  var windows = [];
+  for (var i = 0; i < 5; i++) {
+    var childWindow = window.open("", "", "width=200, height=200");
+    childWindow.document.body.style.width = "200px";
+    childWindow.document.body.style.height = "200px";
+    windows.push(childWindow);
+  }
+
+  var moveWindows = function() {
+    for (var i = 0; i < windows.length; i++) {
+      var window = windows[i];
+      var x = window.screenX;
+      var y = window.screenY;
+      var speedX = 5 + Math.random() * 10;
+      var speedY = 5 + Math.random() * 10;
+
+      x += speedX;
+      y += speedY;
+      if (x + window.outerWidth >= screen.width || x <= 0) {
+        speedX *= -1;
+      }
+      if (y + window.outerHeight >= screen.height || y <= 0) {
+        speedY *= -1;
+      }
+      window.moveTo(x, y);
+    }
+  };
+
+  setInterval(moveWindows, 20);
+}
+</script>
+
+<!-- CSS -->
+<style>
+  /* Style the child windows */
+  body {
+    margin: 0;
+    background-color: lightblue;
+  }
+</style>

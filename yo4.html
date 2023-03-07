@@ -1,0 +1,24 @@
+<script>
+
+var childWindow = null;   // Initialize variable to hold child window object
+var windowWidth = 200;    // Width of child window
+var windowHeight = 200;   // Height of child window
+
+function moveChildWindow() {
+  if (childWindow == null || childWindow.closed) {
+    // Open new child window if it doesn't exist or is closed
+    childWindow = window.open('', 'child', 'width=' + windowWidth + ',height=' + windowHeight);
+  }
+  // Set position of child window
+  var x = childWindow.screenX + 5;
+  var y = childWindow.screenY + 5;
+  childWindow.moveTo(x, y);
+  // Resize child window to original size
+  childWindow.resizeTo(windowWidth, windowHeight);
+  // Repeat every 50 milliseconds
+  setTimeout(moveChildWindow, 50);
+}
+
+moveChildWindow();   // Start moving the child window
+
+</script>

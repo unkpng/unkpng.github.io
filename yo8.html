@@ -1,0 +1,48 @@
+<script>
+
+  var childWindows = [];    // Initialize array to hold child window objects
+var windowWidth = 200;    // Width of child window
+var windowHeight = 200;   // Height of child window
+var numWindows = 6;       // Number of child windows to open
+var xVelocity = 5;        // Horizontal velocity of child window
+var yVelocity = 5;        // Vertical velocity of child window
+
+function moveChildWindow(index) {
+  if (childWindows[index] == null || childWindows[index].closed) {
+    // Generate random coordinates for new child window
+    var x = Math.floor(Math.random() * (window.screen.width - windowWidth));
+    var y = Math.floor(Math.random() * (window.screen.height - windowHeight));
+    // Open new child window at random coordinates
+    childWindows[index] = window.open('', 'child'+index, 'left=' + x + ',top=' + y + ',width=' + windowWidth + ',height=' + windowHeight);
+  }
+  // Get screen dimensions
+  var screenWidth = window.screen.width;
+  var screenHeight = window.screen.height;
+  // Set position of child window
+  var x = childWindows[index].screenX + xVelocity;
+  var y = childWindows[index].screenY + yVelocity;
+  // If child window hits a screen edge, reverse its velocity
+  if (x <= 0 || x + windowWidth >= screenWidth) {
+    xVelocity = -xVelocity;
+    // Move child window away from edge to avoid getting stuck
+    x = (x <= 0) ? 1 : screenWidth - windowWidth - 1;
+  }
+  if (y <= 0 || y + windowHeight >= screenHeight) {
+    yVelocity = -yVelocity;
+    // Move child window away from edge to avoid getting stuck
+    y = (y <= 0) ? 1 : screenHeight - windowHeight - 1;
+  }
+  childWindows[index].moveTo(x, y);
+  // Resize child window to original size
+  childWindows[index].resizeTo(windowWidth, windowHeight);
+  // Repeat every 50 milliseconds
+  setTimeout(function() { moveChildWindow(index) }, 50);
+}
+
+// Start moving all child windows
+for (var i = 0; i < numWindows; i++) {
+  moveChildWindow(i);
+}
+
+  
+</script>
