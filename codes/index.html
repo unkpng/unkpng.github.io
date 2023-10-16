@@ -1,2 +1,26 @@
-<script src=prompt("enter the file name:")> </script>
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Run File</title>
+</head>
+<body>
+	<button onclick="selectFile()">Select File</button>
+	<script>
+		function selectFile() {
+			const input = document.createElement('input');
+			input.type = 'file';
+			input.onchange = () => {
+				const file = input.files[0];
+				if (file) {
+					const reader = new FileReader();
+					reader.readAsText(file);
+					reader.onload = () => {
+						eval(reader.result);
+					};
+				}
+			};
+			input.click();
+		}
+	</script>
+</body>
+</html>
